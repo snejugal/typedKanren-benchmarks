@@ -12,6 +12,7 @@
         devShells.default = mkShell {
           packages = [
             gradle
+            racket-minimal
           ];
         };
       }
