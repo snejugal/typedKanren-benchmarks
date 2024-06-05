@@ -13,6 +13,11 @@
           packages = [
             gradle
             racket-minimal
+            ocaml
+            ocamlPackages.findlib
+            dune_3
+            opam
+            gnum4
           ];
         };
       }

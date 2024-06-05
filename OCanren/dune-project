@@ -1,0 +1,5 @@
+(lang dune 3.14)
+(generate_opam_files true)
+(package
+  (name OCanren_benchmarks)
+  (depends ocaml dune benchmark))

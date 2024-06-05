@@ -1,0 +1,3 @@
+[submodule "OCanren/OCanren"]
+	path = OCanren/OCanren
+	url = https://github.com/SnejUgal/OCanren.git

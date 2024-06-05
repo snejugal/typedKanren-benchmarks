@@ -1,0 +1,62 @@
+(executable
+ (name all_benchmarks)
+ (modules all_benchmarks)
+ (flags (:standard -rectypes -warn-error -32-69))
+ (libraries benchmark numero_decls scheme_interpret))
+
+(rule
+ (targets pp5+dump.exe)
+ (action
+  (run
+   mkcamlp5.opt
+   -package
+   camlp5,camlp5.pa_o,camlp5.macro,camlp5.pr_dump
+   -o
+   %{targets})))
+
+(library
+ (name numero_decls)
+ (modules numero_decls)
+ (wrapped false)
+ (libraries OCanren OCanren.tester)
+ (flags
+  (:standard
+   -rectypes
+   ))
+ (preprocessor_deps %{project_root}/bin/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr
+   ppx_optcomp
+   --
+   -pp
+   bin/pp5+dump.exe)))
+
+(library
+ (name scheme_interpret)
+ (modules scheme_ast scheme_interpret)
+ (wrapped false)
+ (libraries OCanren FCPM)
+ (flags
+  (:standard
+   -rectypes
+   ))
+ (preprocessor_deps %{project_root}/bin/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr
+   ppx_optcomp
+   ppx_expect
+   --
+   -pp
+   bin/pp5+dump.exe)))
+
+(library
+ (name FCPM)
+ (modules FCPM))
