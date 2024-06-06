@@ -1,3 +1,6 @@
 [submodule "OCanren/OCanren"]
 	path = OCanren/OCanren
 	url = https://github.com/SnejUgal/OCanren.git
+[submodule "typedKanren"]
+	path = typedKanren
+	url = git@github.com:SnejUgal/typedKanren.git
