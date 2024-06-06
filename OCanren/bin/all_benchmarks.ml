@@ -75,6 +75,9 @@ let bench1 ?(iterations=10) name rel update =
   let res = latency1 ~repeat:repeat (Int64.of_int iterations) ~name rel () in
   print_newline ();
   tabulate res;
+  let _, data = List.hd res in
+  let avg = avg data *. (1000. /. float_of_int iterations) in
+    update avg;
 ;;
 
 let () =
