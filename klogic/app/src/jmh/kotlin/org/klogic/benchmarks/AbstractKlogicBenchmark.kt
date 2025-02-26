@@ -9,6 +9,10 @@ import com.sun.management.GarbageCollectionNotificationInfo
 import javax.management.openmbean.CompositeData
 import java.lang.management.ManagementFactory
 
+// Code for collecting memory consumption metrics is based on
+// https://cruftex.net/2017/03/28/The-6-Memory-Metrics-You-Should-Track-in-Your-Java-Benchmarks.html
+// and
+// https://github.com/cache2k/cache2k-benchmark/blob/e4cd7a8c491bf275545b3003932c2eebb69606e9/jmh-suite/src/main/java/org/cache2k/benchmark/jmh/GcProfiler.java
 @BenchmarkMode(Mode.AverageTime)
 @Warmup(iterations = 1)
 @Fork(1)
