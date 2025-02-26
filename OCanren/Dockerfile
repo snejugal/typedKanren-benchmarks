@@ -10,6 +10,23 @@ COPY OCanren_benchmarks.opam .
 RUN opam install . ./OCanren --deps-only -y
 COPY dune-project .
 COPY bin bin
-RUN eval $(opam env) && dune build ./bin/all_benchmarks.exe --profile=release
+RUN eval $(opam env) && dune build --profile=release \
+    ./bin/all_benchmarks.exe \
+    ./bin/mem_exp3.exe \
+    ./bin/mem_log3.exe \
+    ./bin/mem_quines.exe \
+    ./bin/mem_twines.exe \
+    ./bin/mem_thrines.exe
 
-CMD ["_build/default/bin/all_benchmarks.exe"]
+WORKDIR _build/default/bin
+RUN cat > ./mem.sh <<EOF
+#!/bin/sh
+set -x
+./mem_exp3.exe
+./mem_log3.exe
+./mem_quines.exe
+./mem_twines.exe
+./mem_thrines.exe
+EOF
+RUN chmod +x mem.sh
+CMD ["./all_benchmarks.exe"]
