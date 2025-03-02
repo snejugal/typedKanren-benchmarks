@@ -15,7 +15,23 @@ this, we had to resort to Docker containers.
 
 ```
 …/typedKanren-bechmarks/OCanren $ docker build -t ocanren-benchmarks .
-…/typedKanren-bechmarks/OCanren $ docker run ocanren-benchmarks
+…/typedKanren-bechmarks/OCanren $ docker run --rm ocanren-benchmarks
 ```
 
 The results will be printed to the terminal.
+
+To run memory benchmarks, change the entrypoint to `./mem.sh`:
+
+```
+…/typedKanren-bechmarks/OCanren $ docker run --rm --entrypoint ./mem.sh ocanren-benchmarks
++ ./mem_exp3.exe
+Peak allocated in major heap: 1474560 B
++ ./mem_log3.exe
+Peak allocated in major heap: 983040 B
++ ./mem_quines.exe
+Peak allocated in major heap: 173547520 B
++ ./mem_twines.exe
+Peak allocated in major heap: 113758208 B
++ ./mem_thrines.exe
+Peak allocated in major heap: 150777856 B
+```

@@ -4,6 +4,36 @@
  (flags (:standard -rectypes -warn-error -32-69))
  (libraries benchmark numero_decls scheme_interpret))
 
+(executable
+ (name mem_exp3)
+ (modules mem_exp3)
+ (flags (:standard -rectypes -warn-error -32-69))
+ (libraries benchmark numero_decls))
+
+(executable
+ (name mem_log3)
+ (modules mem_log3)
+ (flags (:standard -rectypes -warn-error -32-69))
+ (libraries benchmark numero_decls))
+
+(executable
+ (name mem_quines)
+ (modules mem_quines)
+ (flags (:standard -rectypes -warn-error -32-69))
+ (libraries benchmark scheme_interpret))
+
+(executable
+ (name mem_twines)
+ (modules mem_twines)
+ (flags (:standard -rectypes -warn-error -32-69))
+ (libraries benchmark scheme_interpret))
+
+(executable
+ (name mem_thrines)
+ (modules mem_thrines)
+ (flags (:standard -rectypes -warn-error -32-69))
+ (libraries benchmark scheme_interpret))
+
 (rule
  (targets pp5+dump.exe)
  (action
