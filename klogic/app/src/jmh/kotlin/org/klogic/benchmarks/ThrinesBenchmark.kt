@@ -8,7 +8,7 @@ open class ThrinesBenchmark : AbstractKlogicBenchmark() {
     @Benchmark
     fun benchmarkThrines() {
         RelationalContext().useWith {
-            findThrines(3)
+            findThrines(2)
         }
     }
 }
